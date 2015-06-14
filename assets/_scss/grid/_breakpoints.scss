@@ -1,0 +1,51 @@
+@mixin breakpoint($point) {
+  @if $point == wide{
+    @media (min-width: 1200px) { @content; }
+  }
+  @else if $point == desktop {
+    @media (min-width: 1025px) and (max-width: 1200px) { @content; }
+  }
+  @else if $point == tablet {
+    @media (min-width: 768px) and (max-width: 1025px) { @content; }
+  }
+  @else if $point == mobile {
+    @media (min-width: 0px) and (max-width: 767px)  { @content; }
+  }
+  @if $point == landscape{
+    @media (orientation: landscape) { @content }
+  }
+  @if $point == portrait{
+    @media (orientation: portrait) { @content }
+  }
+}
+
+.mobile-and-tablet-only{
+  display: none;
+  @include breakpoint(mobile){
+    display: block;
+  }
+  @include breakpoint(tablet){
+    display: block;
+  }
+}
+
+@include breakpoint(mobile){
+  .not-mobile-and-tablet{
+    display: none !important;
+  }
+}
+@include breakpoint(tablet){
+  .not-mobile-and-tablet{
+    display: none !important;
+  }
+}
+
+.desktop-break{
+  display: block;
+  @include breakpoint(mobile){
+    display: none;
+  }
+  @include breakpoint(tablet){
+    display: none;
+  }
+}

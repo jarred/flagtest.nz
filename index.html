@@ -11,24 +11,64 @@
         <link rel="stylesheet" href="/assets/css/style.min.css" media="screen" charset="utf-8">
     </head>
     <body>
-      <div class="skyline">
-        <div class="intro">
-          <h3 class="lined-header">FLAGTEST.NZ</h3>
-          <p class="intro-text">See how a flag design works in a raging New Zealand southerly or a gentle nor'wester...</p>
+      <div class="skyline js-skyline">
+        <div class="intro js-view" data-view="Intro">
+          <h3 class="lined-heading">FLAGTEST.NZ</h3>
+          <p class="intro-text">See how a flag design works in a raging <span class="desktop-break"></span>New Zealand southerly or a gentle nor'wester...</p>
           <div class="intro-actions">
             <button class="btn">Upload &amp; test a flag</button>
-            <button class="btn">View a random flag</button>
+            &nbsp;
+            <button class="btn js-random">View a random flag</button>
           </div>
           <p class="intro-submit">Looking to submit a design? <a href="http://flag.govt.nz" target="_blank">Visit the official site &#10140;</a></p>
         </div>
       </div>
       <div class="footer">
         <div class="footer-about">
-          <h3 class="footer-header">About</h3>
+          <h3 class="footer-heading lined-heading">About</h3>
         </div>
         <div class="footer-elsewhere">
-          <h3 class="footer-header">Elsewhere</h3>
+          <h3 class="footer-heading lined-heading">Elsewhere</h3>
         </div>
       </div>
+      <script src="/assets/js/vendor/three50dev2.js"></script>
+      <script src="/assets/js/vendor/flag-physics.js"></script>
+      <script type="text/template" class="tpl-flag">
+        <div class="flag-header">
+          <div class="grid-container">
+            <a href="/">FLAGTEST.NZ</a>
+          </div>
+        </div>
+        <div class="flag-canvas js-flag-canvas"></div>
+        <div class="flag-info">
+          <h1 class="flag-heading"><span class="flag-title"><%= title %></span> by <span class="flag-designer"><%= designer %></span></h1>
+          <p class="flag-discourse">Discuss on <a href="#">flagpost.nz</a>. View original submission on <a href="<%= url %>" target="_blank">flag.govt.nz</a></p>
+        </div>
+      </script>
+      <script type="x-shader/x-fragment" id="fragmentShaderDepth">
+  			uniform sampler2D texture;
+  			varying vec2 vUV;
+  			vec4 pack_depth( const in float depth ) {
+  				const vec4 bit_shift = vec4( 256.0 * 256.0 * 256.0, 256.0 * 256.0, 256.0, 1.0 );
+  				const vec4 bit_mask  = vec4( 0.0, 1.0 / 256.0, 1.0 / 256.0, 1.0 / 256.0 );
+  				vec4 res = fract( depth * bit_shift );
+  				res -= res.xxyz * bit_mask;
+  				return res;
+  			}
+  			void main() {
+  				vec4 pixel = texture2D( texture, vUV );
+  				if ( pixel.a < 0.5 ) discard;
+  				gl_FragData[ 0 ] = pack_depth( gl_FragCoord.z );
+  			}
+  		</script>
+  		<script type="x-shader/x-vertex" id="vertexShaderDepth">
+  			varying vec2 vUV;
+  			void main() {
+  				vUV = 0.75 * uv;
+  				vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+  				gl_Position = projectionMatrix * mvPosition;
+  			}
+  		</script>
+      <script src="/assets/app.min.js"></script>
     </body>
 </html>
