@@ -1,0 +1,19 @@
+// Ghetto reset
+*{
+  margin: 0;
+  padding: 0;
+}
+
+// Variables
+$blue: #69b3df;
+$black: #333333;
+
+$sans: 'Calibre', 'Helvetica Neue', Sans-Serif;
+
+//
+html{
+  background-color: $black;
+  font-family: $sans;
+}
+
+@import "ui/_skyline";
