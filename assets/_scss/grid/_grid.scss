@@ -1,0 +1,46 @@
+$gridMargin: 26px;
+
+.grid{
+
+}
+
+.grid-container{
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  @include breakpoint(mobile){
+    margin-left: 20px;
+    margin-right: 20px;
+  };
+}
+
+.grid-container .grid-container{
+  @include breakpoint(mobile){
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+.grid-col{
+  float: left;
+  margin-right: 26px;
+  &:last-of-type{
+    margin-right: 0;
+  }
+  @include breakpoint(mobile){
+    width: 100% !important;
+    margin-right: 0;
+  }
+}
+
+.grid-col-1_3{
+  width: calc(33.33333333% - 13px);
+}
+
+.grid-col-2_3{
+  width: calc(66.66666666% - 13px);
+}
+
+.grid-col-1_2{
+  width: calc(50% - 13px);
+}

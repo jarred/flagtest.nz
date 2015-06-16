@@ -13,7 +13,7 @@
   top: 0;
   right: 0;
   z-index: 10;
-  height: 50px;
+  height: 70px;
 }
 
 .flag-canvas{
@@ -42,4 +42,15 @@
   padding: 20px 0;
   color: $white;
   z-index: 10;
+  a{
+    color: $white;
+  }
+}
+
+.flag-logo{
+  font-weight: 600;
+  font-size: 20px;
+  color: $white;
+  line-height: 70px;
+  text-decoration: none;
 }

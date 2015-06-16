@@ -7,7 +7,7 @@
   background-size: cover;
   background-position: center center;
   @include breakpoint(mobile){
-    padding-bottom: 140%;
+    padding-bottom: 160%;
   }
   @include breakpoint(tablet){
     padding-bottom: 100%;

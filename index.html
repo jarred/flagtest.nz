@@ -24,11 +24,31 @@
         </div>
       </div>
       <div class="footer">
-        <div class="footer-about">
-          <h3 class="footer-heading lined-heading">About</h3>
-        </div>
-        <div class="footer-elsewhere">
-          <h3 class="footer-heading lined-heading">Elsewhere</h3>
+        <div class="grid-container">
+          <div class="footer-about grid-col grid-col-2_3">
+            <h3 class="footer-heading lined-heading">About</h3>
+            <div class="grid-container">
+              <div class="grid-col grid-col-1_2">
+                <p>We think you can’t really tell how awesome a flag is until it’s flown. Does it look recognisable in a gentle nor’wester or will we only be able to tell if it’s our flag when it’s a raging New Zealand southerly…</p>
+
+                <p>Brought to you by Dan Newman & Jarred Bishop. </p>
+
+                <p>This site uses clever code from Josh Barr (NZ Flag API) & Joshua Koo (3D Flag Javascript).
+
+
+
+              </div>
+              <div class="grid-col grid-col-1_2">
+                <p>This site is not associated with the New Zealand Governments flag consideration project.
+ Visit the official sites: flag.govt.nz & standfor.co.nz.</p>
+<p>The flag submissions are being used under the Creative Commons Attribution 3.0 NZ Licence.</p>
+
+              </div>
+            </div>
+          </div>
+          <div class="footer-elsewhere grid-col grid-col-1_3">
+            <h3 class="footer-heading lined-heading">Elsewhere</h3>
+          </div>
         </div>
       </div>
       <script src="/assets/js/vendor/three50dev2.js"></script>
@@ -37,13 +57,15 @@
       <script type="text/template" class="tpl-flag">
         <div class="flag-header">
           <div class="grid-container">
-            <a href="/">FLAGTEST.NZ</a>
+            <a href="/" class="flag-logo">FLAGTEST.NZ</a>
           </div>
         </div>
         <div class="flag-canvas js-flag-canvas"></div>
         <div class="flag-info">
-          <h1 class="flag-heading"><span class="flag-title"><%= title %></span> by <span class="flag-designer"><%= designer %></span></h1>
-          <p class="flag-discourse">Discuss on <a href="#">flagpost.nz</a>. View original submission on <a href="<%= url %>" target="_blank">flag.govt.nz</a></p>
+          <div class="grid-container">
+            <h1 class="flag-heading"><span class="flag-title"><%= title %></span> by <span class="flag-designer"><%= designer %></span></h1>
+            <p class="flag-discourse">Discuss on <a href="#">flagpost.nz</a>. View original submission on <a href="<%= url %>" target="_blank">flag.govt.nz</a></p>
+          </div>
         </div>
       </script>
       <script type="x-shader/x-fragment" id="fragmentShaderDepth">
