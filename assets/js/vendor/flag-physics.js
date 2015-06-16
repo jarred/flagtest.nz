@@ -337,20 +337,20 @@ function simulate(time) {
 	ballPosition.z = -Math.sin(Date.now()/300) * 90 ; //+ 40;
 	ballPosition.x = Math.cos(Date.now()/200) * 70
 
-	if (sphere.visible)
-	for (particles = cloth.particles, i=0, il = particles.length
-			;i<il;i++) {
-		particle = particles[i];
-		pos = particle.position;
-		diff.sub(pos, ballPosition);
-		if (diff.length() < ballSize) {
-			// collided
-			diff.normalize().multiplyScalar(ballSize);
-			pos.copy(ballPosition).addSelf(diff);
-		}
-	}
-
-	// Pin Constrains
+	// if (sphere.visible)
+	// for (particles = cloth.particles, i=0, il = particles.length
+	// 		;i<il;i++) {
+	// 	particle = particles[i];
+	// 	pos = particle.position;
+	// 	diff.sub(pos, ballPosition);
+	// 	if (diff.length() < ballSize) {
+	// 		// collided
+	// 		diff.normalize().multiplyScalar(ballSize);
+	// 		pos.copy(ballPosition).addSelf(diff);
+	// 	}
+	// }
+	//
+	// // Pin Constrains
 
 	for (i=0, il=pins.length;i<il;i++) {
 		var xy = pins[i];

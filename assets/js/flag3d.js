@@ -12,7 +12,6 @@ var camera, scene, renderer;
 var clothGeometry;
 var sphere;
 var object, arrow;
-var rotate = false;
 
 var Flag3D = {
   init: function(){
@@ -20,8 +19,8 @@ var Flag3D = {
     // document.body.appendChild( container );
     // scene
     scene = new THREE.Scene();
-    // scene.fog = new THREE.Fog( 0x000000, 1000, 10000 );
-    // scene.fog.color.setHSV( 0.6, 0.2, 1 );
+    scene.fog = new THREE.Fog( 0x000000, 1000, 10000 );
+    scene.fog.color.setHSV( 0.6, 0.2, 1 );
     // camera
     camera = new THREE.PerspectiveCamera( 30, window.innerWidth / window.innerHeight, 1, 10000 );
     camera.position.y = 50;
@@ -53,7 +52,7 @@ var Flag3D = {
     // cloth material
     var clothTexture = THREE.ImageUtils.loadTexture( flagImage );
     clothTexture.wrapS = clothTexture.wrapT = THREE.RepeatWrapping;
-    clothTexture.anisotropy = 16;
+    clothTexture.anisotropy = 32;
     materials = [
       new THREE.MeshPhongMaterial( { alphaTest: 0.5, ambient: 0xffffff, color: 0xffffff, specular: 0x030303, emissive: 0x111111, shiness: 10, perPixel: true, metal: false, map: clothTexture, doubleSided: true } ),
       new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true, transparent: true, opacity: 0.9 } )
@@ -74,16 +73,16 @@ var Flag3D = {
     scene.add( object );
     object.customDepthMaterial = new THREE.ShaderMaterial( { uniforms: uniforms, vertexShader: vertexShader, fragmentShader: fragmentShader } );
     // sphere
-    var ballGeo = new THREE.SphereGeometry( ballSize, 20, 20 );
-    var ballMaterial = new THREE.MeshPhongMaterial( { color: 0xffffff } );
-    sphere = new THREE.Mesh( ballGeo, ballMaterial );
-    window.sphere = sphere;
-    sphere.castShadow = true;
-    sphere.receiveShadow = true;
-    scene.add( sphere );
+    // var ballGeo = new THREE.SphereGeometry( ballSize, 20, 20 );
+    // var ballMaterial = new THREE.MeshPhongMaterial( { color: 0xffffff } );
+    // sphere = new THREE.Mesh( ballGeo, ballMaterial );
+    // window.sphere = sphere;
+    // sphere.castShadow = true;
+    // sphere.receiveShadow = true;
+    // scene.add( sphere );
     // arrow
-    arrow = new THREE.ArrowHelper( new THREE.Vector3( 0, 1, 0 ), new THREE.Vector3( 0, 0, 0 ), 50, 0xff0000 );
-    arrow.position.set( -200, 0, -200 );
+    // arrow = new THREE.ArrowHelper( new THREE.Vector3( 0, 1, 0 ), new THREE.Vector3( 0, 0, 0 ), 50, 0xff0000 );
+    // arrow.position.set( -200, 0, -200 );
     //scene.add( arrow );
     // // ground
     // var initColor = new THREE.Color( 0x00ff00 );
@@ -100,21 +99,21 @@ var Flag3D = {
     // mesh.receiveShadow = true;
     // scene.add( mesh );
     // poles
-    var poleGeo = new THREE.CubeGeometry( 5, 750, 5 );
-    var poleMat = new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0x111111, shiness: 100, perPixel: true } );
+    var poleGeo = new THREE.CubeGeometry( 14, 750, 2 );
+    var poleMat = new THREE.MeshPhongMaterial( { color: 0x4A4A4A, specular: 0x111111, shiness: 0, perPixel: true } );
     var mesh = new THREE.Mesh( poleGeo, poleMat );
     mesh.position.y = -175; //-250
-    mesh.position.x = 0;
+    mesh.position.x = -4;
     mesh.receiveShadow = true;
     mesh.castShadow = true;
     scene.add( mesh );
-    var gg = new THREE.CubeGeometry( 10, 10, 10 );
-    var mesh = new THREE.Mesh( gg, poleMat );
-    mesh.position.y = -250;
-    mesh.position.x = 0; //125
-    mesh.receiveShadow = true;
-    mesh.castShadow = true;
-    scene.add( mesh );
+    // var gg = new THREE.CubeGeometry( 10, 10, 10 );
+    // var mesh = new THREE.Mesh( gg, poleMat );
+    // mesh.position.y = -250;
+    // mesh.position.x = 0; //125
+    // mesh.receiveShadow = true;
+    // mesh.castShadow = true;
+    // scene.add( mesh );
     //
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setSize( window.innerWidth, window.innerHeight );
@@ -137,7 +136,7 @@ var Flag3D = {
     window.addEventListener( 'resize', function(){
       _this.onResize();
     });
-    sphere.visible = !true
+    // sphere.visible = !true
     this.animate();
     this.onResize();
   },
@@ -156,8 +155,8 @@ var Flag3D = {
     var time = Date.now();
     windStrength = Math.cos( time / 7000 ) * 100 + 200;
     windForce.set( Math.sin( time / 2000 ), Math.cos( time / 3000 ), Math.sin( time / 1000 ) ).normalize().multiplyScalar( windStrength );
-    arrow.setLength( windStrength );
-    arrow.setDirection( windForce );
+    // arrow.setLength( windStrength );
+    // arrow.setDirection( windForce );
     simulate(time);
     this.render();
     // stats.update();
@@ -172,11 +171,7 @@ var Flag3D = {
     clothGeometry.computeVertexNormals();
     clothGeometry.normalsNeedUpdate = true;
     clothGeometry.verticesNeedUpdate = true;
-    sphere.position.copy( ballPosition );
-    if ( rotate ) {
-      camera.position.x = Math.cos( timer ) * 1500;
-      camera.position.z = Math.sin( timer ) * 1500;
-    }
+    // sphere.position.copy( ballPosition );
     camera.lookAt( scene.position );
     renderer.render( scene, camera );
   }

@@ -3,6 +3,9 @@
   height: 0;
   padding-bottom: 50%;
   background-color: $blue;
+  background-image: url('/assets/images/sky-bg.png');
+  background-size: cover;
+  background-position: center center;
   @include breakpoint(mobile){
     padding-bottom: 140%;
   }
