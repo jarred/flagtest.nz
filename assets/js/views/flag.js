@@ -12,8 +12,9 @@ var FlagView = Backbone.View.extend({
   render: function(){
     this.template = _.template($('.tpl-flag').html());
     this.$el.html(this.template(this.model.toJSON()));
+    var _this = this;
     _.defer(function(){
-      window.Flag3D.init();
+      window.Flag3D.init(_this.model.get('uploadEvent'));
     });
   }
 });

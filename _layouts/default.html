@@ -7,11 +7,14 @@
           <h3 class="lined-heading">FLAGTEST.NZ</h3>
           <p class="intro-text">See how a flag design works in a raging <span class="desktop-break"></span>New Zealand southerly or a gentle nor'wester...</p>
           <div class="intro-actions">
-            <button class="btn">Upload &amp; test a flag</button>
+            <button class="btn skyline-upload js-view" data-view="Upload">
+              Upload &amp; test a flag
+              <input type="file" class="js-upload skyline-upload-input" />
+            </button>
             &nbsp;
             <button class="btn js-random">View a random flag</button>
           </div>
-          <p class="intro-submit">Looking to submit a design? <a href="http://flag.govt.nz" target="_blank">Visit the official site &#10140;</a></p>
+          <p class="intro-submit">Looking to submit a design? <a href="http://flag.govt.nz" target="_blank">Visit the official site »</a></p>
         </div>
       </div>
       {{ content }}
@@ -20,18 +23,7 @@
       <script src="/assets/js/vendor/flag-physics.js"></script>
       <script src="/assets/js/flag3d.js"></script>
       <script type="text/template" class="tpl-flag">
-        <div class="flag-header">
-          <div class="grid-container">
-            <a href="/" class="flag-logo">FLAGTEST.NZ</a>
-          </div>
-        </div>
-        <div class="flag-canvas js-flag-canvas"></div>
-        <div class="flag-info">
-          <div class="grid-container">
-            <h1 class="flag-heading"><span class="flag-title"><%= title %></span> by <span class="flag-designer"><%= designer %></span></h1>
-            <p class="flag-discourse">Discuss on <a href="#">flagpost.nz</a>. View original submission on <a href="<%= url %>" target="_blank">flag.govt.nz</a></p>
-          </div>
-        </div>
+          {% include flag.html %}
       </script>
       <script type="x-shader/x-fragment" id="fragmentShaderDepth">
   			uniform sampler2D texture;

@@ -14,7 +14,7 @@ var sphere;
 var object, arrow;
 
 var Flag3D = {
-  init: function(){
+  init: function(event){
     this.container = $('.js-flag-canvas');
     // document.body.appendChild( container );
     // scene
@@ -50,9 +50,17 @@ var Flag3D = {
     light.position.set( 0, -1, 0 );
     scene.add( light );
     // cloth material
-    var clothTexture = THREE.ImageUtils.loadTexture( flagImage );
+    var clothTexture;
+    if(event !== undefined){
+      console.log(event.target.result);
+      clothTexture = new THREE.DataTexture(event.target.result, 752, 752, THREE.RGBFormat);
+      console.log('clothTexture', clothTexture);
+      // clothTexture.needsUpdate = true;
+    }else{
+      clothTexture = THREE.ImageUtils.loadTexture( flagImage );
+    }
     clothTexture.wrapS = clothTexture.wrapT = THREE.RepeatWrapping;
-    clothTexture.anisotropy = 32;
+    clothTexture.anisotropy = 16;
     materials = [
       new THREE.MeshPhongMaterial( { alphaTest: 0.5, ambient: 0xffffff, color: 0xffffff, specular: 0x030303, emissive: 0x111111, shiness: 10, perPixel: true, metal: false, map: clothTexture, doubleSided: true } ),
       new THREE.MeshBasicMaterial( { color: 0xff0000, wireframe: true, transparent: true, opacity: 0.9 } )
