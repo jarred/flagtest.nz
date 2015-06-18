@@ -1,9 +1,11 @@
 .btn{
   display: inline-block;
   text-transform: uppercase;
-  border: 2px solid $white;
+  border: 1px solid rgba($white, .5);
+  -webkit-font-smoothing: antialiased;
+  font-weight: 700;
   background-color: transparent;
-  font-weight: 600;
+  font-weight: 700;
   color: $white;
   padding: 10px;
   vertical-align: middle;

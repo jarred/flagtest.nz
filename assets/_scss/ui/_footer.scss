@@ -1,3 +1,25 @@
 .footer{
   padding: 30px 0;
+  color: #A5A5A5;
+  font-size: 14px;
+  background-color: $black;
+}
+
+.footer p{
+  margin: 0;
+  margin-bottom: 17px;
+  margin-right: 20px;
+}
+
+.footer a{
+  color: #FFF;
+  text-decoration: none;
+  &:hover{
+    text-decoration: underline;
+  }
+}
+
+.footer-heading{
+  font-size: 18px;
+  line-height: 22px;
 }
