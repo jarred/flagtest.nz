@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html class="no-js">
-    <head>
-        <meta charset="utf-8">
-        <title>Flag Test</title>
-        <meta name="description" content="">
-        <meta name="HandheldFriendly" content="True">
-        <meta name="MobileOptimized" content="320">
-        <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui">
-        <meta http-equiv="cleartype" content="on">
-        <link rel="stylesheet" href="/assets/css/style.min.css" media="screen" charset="utf-8">
-    </head>
+    {% include head.html %}
     <body>
       <div class="skyline js-skyline">
         <div class="intro js-view" data-view="Intro">
@@ -23,34 +14,8 @@
           <p class="intro-submit">Looking to submit a design? <a href="http://flag.govt.nz" target="_blank">Visit the official site &#10140;</a></p>
         </div>
       </div>
-      <div class="footer">
-        <div class="grid-container">
-          <div class="footer-about grid-col grid-col-2_3">
-            <h3 class="footer-heading lined-heading">About</h3>
-            <div class="grid-container">
-              <div class="grid-col grid-col-1_2">
-                <p>We think you can’t really tell how awesome a flag is until it’s flown. Does it look recognisable in a gentle nor’wester or will we only be able to tell if it’s our flag when it’s a raging New Zealand southerly…</p>
-
-                <p>Brought to you by Dan Newman & Jarred Bishop. </p>
-
-                <p>This site uses clever code from Josh Barr (NZ Flag API) & Joshua Koo (3D Flag Javascript).
-
-
-
-              </div>
-              <div class="grid-col grid-col-1_2">
-                <p>This site is not associated with the New Zealand Governments flag consideration project.
- Visit the official sites: flag.govt.nz & standfor.co.nz.</p>
-<p>The flag submissions are being used under the Creative Commons Attribution 3.0 NZ Licence.</p>
-
-              </div>
-            </div>
-          </div>
-          <div class="footer-elsewhere grid-col grid-col-1_3">
-            <h3 class="footer-heading lined-heading">Elsewhere</h3>
-          </div>
-        </div>
-      </div>
+      {{ content }}
+      {% include footer.html %}
       <script src="/assets/js/vendor/three50dev2.js"></script>
       <script src="/assets/js/vendor/flag-physics.js"></script>
       <script src="/assets/js/flag3d.js"></script>
