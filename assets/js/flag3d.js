@@ -4,8 +4,6 @@ var pins = [];
 for (var j=0;j<=cloth.h;j++)
 pins.push(cloth.index(0, j));
 
-// if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
-
 var stats;
 var camera, scene, renderer;
 
@@ -16,8 +14,6 @@ var object, arrow;
 var Flag3D = {
   init: function(event){
     this.container = $('.js-flag-canvas');
-    // document.body.appendChild( container );
-    // scene
     scene = new THREE.Scene();
     scene.fog = new THREE.Fog( 0x000000, 1000, 10000 );
     scene.fog.color.setHSV( 0.6, 0.2, 1 );
@@ -54,8 +50,6 @@ var Flag3D = {
     if(event !== undefined){
       console.log(event.target.result);
       clothTexture = new THREE.DataTexture(event.target.result, 752, 752, THREE.RGBFormat);
-      console.log('clothTexture', clothTexture);
-      // clothTexture.needsUpdate = true;
     }else{
       clothTexture = THREE.ImageUtils.loadTexture( flagImage );
     }
@@ -80,32 +74,6 @@ var Flag3D = {
     object.receiveShadow = true;
     scene.add( object );
     object.customDepthMaterial = new THREE.ShaderMaterial( { uniforms: uniforms, vertexShader: vertexShader, fragmentShader: fragmentShader } );
-    // sphere
-    // var ballGeo = new THREE.SphereGeometry( ballSize, 20, 20 );
-    // var ballMaterial = new THREE.MeshPhongMaterial( { color: 0xffffff } );
-    // sphere = new THREE.Mesh( ballGeo, ballMaterial );
-    // window.sphere = sphere;
-    // sphere.castShadow = true;
-    // sphere.receiveShadow = true;
-    // scene.add( sphere );
-    // arrow
-    // arrow = new THREE.ArrowHelper( new THREE.Vector3( 0, 1, 0 ), new THREE.Vector3( 0, 0, 0 ), 50, 0xff0000 );
-    // arrow.position.set( -200, 0, -200 );
-    //scene.add( arrow );
-    // // ground
-    // var initColor = new THREE.Color( 0x00ff00 );
-    // initColor.setHSV( 0.25, 0.85, 0.5 );
-    // var initTexture = THREE.ImageUtils.generateDataTexture( 1, 1, initColor );
-    // var groundMaterial = new THREE.MeshPhongMaterial( { color: 0xffffff, specular: 0x111111, map: initTexture, perPixel: true } );
-    // var groundTexture = THREE.ImageUtils.loadTexture( "/assets/images/grasslight-big.jpg", undefined, function() { groundMaterial.map = groundTexture } );
-    // groundTexture.wrapS = groundTexture.wrapT = THREE.RepeatWrapping;
-    // groundTexture.repeat.set( 25, 25 );
-    // groundTexture.anisotropy = 16;
-    // var mesh = new THREE.Mesh( new THREE.PlaneGeometry( 20000, 20000 ), groundMaterial );
-    // mesh.position.y = -250;
-    // mesh.rotation.x = - Math.PI / 2;
-    // mesh.receiveShadow = true;
-    // scene.add( mesh );
     // poles
     var poleGeo = new THREE.CubeGeometry( 14, 750, 2 );
     var poleMat = new THREE.MeshPhongMaterial( { color: 0x4A4A4A, specular: 0x111111, shiness: 0, perPixel: true } );
@@ -115,36 +83,17 @@ var Flag3D = {
     mesh.receiveShadow = true;
     mesh.castShadow = true;
     scene.add( mesh );
-    // var gg = new THREE.CubeGeometry( 10, 10, 10 );
-    // var mesh = new THREE.Mesh( gg, poleMat );
-    // mesh.position.y = -250;
-    // mesh.position.x = 0; //125
-    // mesh.receiveShadow = true;
-    // mesh.castShadow = true;
-    // scene.add( mesh );
-    //
     renderer = new THREE.WebGLRenderer( { antialias: true } );
     renderer.setSize( window.innerWidth, window.innerHeight );
-    // renderer.setClearColor( scene.fog.color );
     this.container[0].appendChild( renderer.domElement );
     renderer.gammaInput = true;
     renderer.gammaOutput = true;
     renderer.physicallyBasedShading = true;
     renderer.shadowMapEnabled = true;
-    //
-    // stats = new Stats();
-    // stats.domElement.style.position = 'absolute';
-    // stats.domElement.style.top = '0px';
-    // container.appendChild( stats.domElement );
-    // stats.domElement.children[ 0 ].children[ 0 ].style.color = "#aaa";
-    // stats.domElement.children[ 0 ].style.background = "transparent";
-    // stats.domElement.children[ 0 ].children[ 1 ].style.display = "none";
-    //
     var _this = this;
     window.addEventListener( 'resize', function(){
       _this.onResize();
     });
-    // sphere.visible = !true
     this.animate();
     this.onResize();
   },
@@ -163,8 +112,6 @@ var Flag3D = {
     var time = Date.now();
     windStrength = Math.cos( time / 7000 ) * 100 + 200;
     windForce.set( Math.sin( time / 2000 ), Math.cos( time / 3000 ), Math.sin( time / 1000 ) ).normalize().multiplyScalar( windStrength );
-    // arrow.setLength( windStrength );
-    // arrow.setDirection( windForce );
     simulate(time);
     this.render();
     // stats.update();
@@ -179,12 +126,9 @@ var Flag3D = {
     clothGeometry.computeVertexNormals();
     clothGeometry.normalsNeedUpdate = true;
     clothGeometry.verticesNeedUpdate = true;
-    // sphere.position.copy( ballPosition );
     camera.lookAt( scene.position );
     renderer.render( scene, camera );
   }
 };
 
 window.Flag3D = Flag3D;
-
-// module.exports = Flag3D;
