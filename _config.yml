@@ -1,4 +1,4 @@
-exclude: [node_modules, CNAME, gulpfile.js, package.json, README.md]
+exclude: [node_modules, CNAME, webpack.config.js, package.json, README.md]
 sass:
   sass_dir: assets/css
   style: :compressed
