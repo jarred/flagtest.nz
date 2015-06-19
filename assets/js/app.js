@@ -65,7 +65,7 @@
 	var Views = {
 	  Intro:                __webpack_require__(5),
 	  Flag:                 __webpack_require__(6),
-	  Upload:               __webpack_require__(7)
+	  Upload:               __webpack_require__(8)
 	};
 
 	var AppModel = new Backbone.Model();
@@ -12825,6 +12825,7 @@
 	var Backbone        = __webpack_require__(3);
 	var _               = __webpack_require__(2);
 	var $               = __webpack_require__(1);
+	var flagTemplate    = __webpack_require__(7);
 
 	var FlagView = Backbone.View.extend({
 	  className: 'flag',
@@ -12834,8 +12835,8 @@
 	    this.render();
 	  },
 	  render: function(){
-	    this.template = _.template($('.tpl-flag').html());
-	    this.$el.html(this.template(this.model.toJSON()));
+	    // this.template = _.template($('.tpl-flag').html());
+	    this.$el.html(flagTemplate(this.model.toJSON()));
 	    var _this = this;
 	    _.defer(function(){
 	      window.Flag3D.init(_this.model.get('uploadEvent'));
@@ -12848,6 +12849,31 @@
 
 /***/ },
 /* 7 */
+/***/ function(module, exports) {
+
+	module.exports = function (obj) {
+	obj || (obj = {});
+	var __t, __p = '', __j = Array.prototype.join;
+	function print() { __p += __j.call(arguments, '') }
+	with (obj) {
+	__p += '<div class="flag-header">\n  <div class="grid-container">\n    <a href="/" class="flag-logo">FLAGTEST.NZ</a>\n  </div>\n</div>\n<div class="flag-canvas js-flag-canvas"></div>\n';
+	 if(!fromUpload){ ;
+	__p += '\n  <div class="flag-info">\n    <div class="grid-container">\n      <h1 class="flag-heading"><span class="flag-title">' +
+	((__t = ( title )) == null ? '' : __t) +
+	'</span> by <span class="flag-designer">' +
+	((__t = ( designer )) == null ? '' : __t) +
+	'</span></h1>\n      <p class="flag-discourse">Discuss on <a href="#">flagpost.nz</a> ». View original submission on <a href="' +
+	((__t = ( url )) == null ? '' : __t) +
+	'" target="_blank">flag.govt.nz</a> »</p>\n    </div>\n  </div>\n';
+	 } ;
+	__p += '\n';
+
+	}
+	return __p
+	}
+
+/***/ },
+/* 8 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var Backbone        = __webpack_require__(3);
