@@ -1,13 +1,16 @@
 var FlagTest = window.FlagTest || (window.FlagTest = {});
-
 var $                   = require('jquery');
 global.jQuery           = $;
 window.$                = $;
 var _                   = require('underscore');
 var Backbone            = require('backbone');
 Backbone.$ = $;
-var attachFastClick     = require('fastclick');
-attachFastClick(document.body);
+//
+// var Flag3D = require('./flag3d.js');
+// var FlagPhysics = require('./vendor/flag-physics.js');
+// var THREE = require('./vendor/three50dev2.js');
+// var attachFastClick     = require('fastclick');
+// attachFastClick(document.body);
 
 var API                 = require('./api.js');
 
