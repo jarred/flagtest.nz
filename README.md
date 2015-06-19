@@ -7,5 +7,5 @@ Run `npm install` to grab the required libs.
 
 ## Dev
 
-`webpack -w` to watch and compile js +
-`jekyll s -w` to spin up the jekyll server and watch for changes.
+`webpack -w` to watch and compile js +  
+`jekyll s -w` to spin up the server and watch for changes.
