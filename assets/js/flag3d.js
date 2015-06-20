@@ -98,7 +98,6 @@ var Flag3D = {
     this.onResize();
   },
   onResize: function(){
-    console.log(this.container.height())
     var h = this.container.height();
     camera.aspect = window.innerWidth / h;
     camera.updateProjectionMatrix();
@@ -110,11 +109,21 @@ var Flag3D = {
       _this.animate();
     });
     var time = Date.now();
-    windStrength = Math.cos( time / 7000 ) * 100 + 200;
+    // windStrength = Math.cos( time / 7000 ) * 100 + 200;
+    // windStrength = 100;
     windForce.set( Math.sin( time / 2000 ), Math.cos( time / 3000 ), Math.sin( time / 1000 ) ).normalize().multiplyScalar( windStrength );
     simulate(time);
     this.render();
     // stats.update();
+  },
+  toggleWind: function(value){
+    console.log('toggleWind', value);
+    // window.wind = value;
+    if(value){
+      windStrength = 300;
+    }else{
+      windStrength = 120;
+    }
   },
   render: function(){
     var timer = Date.now() * 0.0002;

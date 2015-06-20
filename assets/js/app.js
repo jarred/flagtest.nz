@@ -12829,7 +12829,11 @@
 
 	var FlagView = Backbone.View.extend({
 	  className: 'flag',
+	  events: {
+	    'click .js-wind-toggle': 'toggleWind'
+	  },
 	  initialize: function(options){
+	    _.bindAll(this, 'toggleWind');
 	    console.log(this.model.toJSON())
 	    this.appModel = options.appModel;
 	    this.render();
@@ -12841,6 +12845,15 @@
 	    _.defer(function(){
 	      window.Flag3D.init(_this.model.get('uploadEvent'));
 	    });
+	  },
+	  toggleWind: function(event){
+	    var $el = $(event.target).closest('.js-wind-toggle');
+	    if($el.hasClass('off')){
+	      $el.removeClass('off');
+	    }else{
+	      $el.addClass('off');
+	    }
+	    window.Flag3D.toggleWind(!$el.hasClass('off'));
 	  }
 	});
 
@@ -12856,15 +12869,17 @@
 	var __t, __p = '', __j = Array.prototype.join;
 	function print() { __p += __j.call(arguments, '') }
 	with (obj) {
-	__p += '<div class="flag-header">\n  <div class="grid-container">\n    <a href="/" class="flag-logo">FLAGTEST.NZ</a>\n  </div>\n</div>\n<div class="flag-canvas js-flag-canvas"></div>\n';
+	__p += '<div class="flag-header">\n  <div class="grid-container">\n    <a href="/" class="flag-logo">FLAGTEST.NZ</a>\n    <label class="flag-wind js-wind-toggle" for="flag-wind-input">\n      <span class="flag-wind-text">Raging southerly wind:</span>\n      <div class="flag-wind-toggle">\n        <div class="flag-wind-toggle-white"></div>\n        <span class="flag-wind-toggle-on flag-wind-toggle-text">on</span>\n        <span class="flag-wind-toggle-off flag-wind-toggle-text">off</span>\n      </div>\n    </label>\n  </div>\n</div>\n<div class="flag-canvas js-flag-canvas"></div>\n';
 	 if(!fromUpload){ ;
 	__p += '\n  <div class="flag-info">\n    <div class="grid-container">\n      <h1 class="flag-heading"><span class="flag-title">' +
 	((__t = ( title )) == null ? '' : __t) +
 	'</span> by <span class="flag-designer">' +
 	((__t = ( designer )) == null ? '' : __t) +
-	'</span></h1>\n      <p class="flag-discourse">Discuss on <a href="#">flagpost.nz</a> ». View original submission on <a href="' +
+	'</span></h1>\n      <p class="flag-discourse">Discuss on <a href="http://flagpost.nz/flags/' +
+	((__t = ( id )) == null ? '' : __t) +
+	'">flagpost.nz</a> ». View original submission on <a href="' +
 	((__t = ( url )) == null ? '' : __t) +
-	'" target="_blank">flag.govt.nz</a> »</p>\n    </div>\n  </div>\n';
+	'" target="_blank">flag.govt.nz</a> »</p>\n      <div class="flag-social">\n        <a href="#" class="flag-social-action">\n          <svg width="35" height="35" viewBox="0 0 35 35" xmlns="http://www.w3.org/2000/svg"><title>Twitter Icon</title><path d="M17.744 0C8.24 0 .534 7.695.534 17.187s7.705 17.187 17.21 17.187c9.506 0 17.21-7.695 17.21-17.187S27.25 0 17.745 0zm7.376 17.573c-1.584 6.42-12.22 9.142-17.11 2.477 1.872 1.787 5.135 1.945 7.205-.193-1.213.178-2.097-1.012-.605-1.654-1.342.146-2.087-.567-2.393-1.172.315-.328.66-.48 1.332-.525-1.47-.346-2.01-1.064-2.177-1.934.408-.097.917-.18 1.196-.143-1.287-.67-1.734-1.682-1.663-2.442 2.297.852 3.76 1.537 4.985 2.194.436.23.923.65 1.472 1.18.7-1.845 1.562-3.75 3.04-4.693-.023.215-.14.413-.29.577.42-.38.964-.643 1.518-.72-.063.417-.662.65-1.024.787.274-.085 1.73-.734 1.888-.363.188.42-1.004.613-1.207.686-.152.05-.303.107-.452.166 1.844-.184 3.605 1.337 4.12 3.225.036.136.072.286.105.444.675.25 1.897-.013 2.29-.255-.284.673-1.024 1.17-2.115 1.26.525.218 1.517.338 2.2.222-.432.464-1.13.885-2.318.876z" fill-opacity=".7" fill="#FFF" fill-rule="evenodd"/></svg>\n        </a>\n        <a href="#" class="flag-social-action">\n          <svg width="35" height="34" viewBox="0 0 35 34" xmlns="http://www.w3.org/2000/svg"><title>Facebook Icon</title><path d="M17.99 0C8.58 0 .954 7.618.954 17.014c0 9.398 7.628 17.016 17.038 17.016S35.03 26.412 35.03 17.014C35.028 7.618 27.4 0 17.99 0zm4.943 10.086H20.54c-.472 0-.95.495-.95.86v2.456h3.338c-.134 1.883-.41 3.605-.41 3.605h-2.945V27.68h-4.39V17.007H13.05v-3.59h2.136V10.48c0-.537-.108-4.132 4.498-4.132h3.25v3.738z" fill-opacity=".7" fill="#FFF" fill-rule="evenodd"/></svg>\n        </a>\n      </div>\n    </div>\n  </div>\n';
 	 } ;
 	__p += '\n';
 

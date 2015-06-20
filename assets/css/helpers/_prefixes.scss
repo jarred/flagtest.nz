@@ -1,0 +1,68 @@
+@mixin appearance($val){
+  appearance: $val;
+  -moz-appearance: $val;
+  -webkit-appearance: $val;
+}
+
+@mixin placeholder {
+  &.placeholder { @content }
+  &:-moz-placeholder { @content }
+  &::-webkit-input-placeholder { @content }
+}
+
+@mixin transition($val){
+  -webkit-transition: $val;
+  transition: $val;
+}
+
+@mixin transform($val){
+  -ms-transform: $val;
+  -webkit-transform: $val;
+  transform: $val;
+}
+
+@mixin flexbox() {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+}
+
+@mixin flex($values) {
+  -webkit-box-flex: $values;
+  -moz-box-flex:  $values;
+  -webkit-flex:  $values;
+  -ms-flex:  $values;
+  flex:  $values;
+}
+
+@mixin flex-flow($values){
+  -webkit-flex-flow: $values;
+  -moz-flex-flow: $values;
+  -ms-flex-flow: $values;
+  flex-flow: $values;
+}
+
+@mixin justify-content($values){
+  -webkit-justify-content: $values;
+  justify-content: $values;
+}
+
+@mixin align-items($values){
+  -webkit-align-items: $values;
+  align-items: $values;
+}
+
+@mixin order($val) {
+  -webkit-box-ordinal-group: $val;
+  -moz-box-ordinal-group: $val;
+  -ms-flex-order: $val;
+  -webkit-order: $val;
+  order: $val;
+}
+
+@mixin flex-grow($values){
+  flex-grow: $values;
+  -webkit-flex-grow: $values;
+}

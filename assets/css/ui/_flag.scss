@@ -16,6 +16,14 @@
   height: 70px;
 }
 
+.flag-title{
+  font-weight: 700;
+}
+
+.flag-designer{
+  font-weight: 400;
+}
+
 .flag-canvas{
   position: absolute;
   left: 0;
@@ -53,4 +61,117 @@
   color: $white;
   line-height: 70px;
   text-decoration: none;
+}
+
+.flag-discourse{
+  font-size: 14px;
+  color: #9B9B9B;
+  margin-top: 4px;
+  a{
+    color: #9B9B9B;
+    text-decoration: none;
+    display: inline-block;
+    border-bottom: 1px solid #9B9B9B;
+    line-height: 1;
+    vertical-align: baseline;
+    &:hover{
+      color: $white;
+      border-bottom-color: transparent;
+    }
+  }
+}
+
+.flag-social{
+  position: absolute;
+  right: 0;
+  top: 0;
+  @include breakpoint(mobile){
+    position: static;
+    margin-top: 10px;
+  }
+}
+
+.flag-social-action{
+  text-decoration: none;
+  &:hover{
+    svg path{
+      fill-opacity: 1;
+    }
+  }
+}
+
+.flag-wind{
+  position: absolute;
+  right: 0;
+  top: 50%;
+  margin-top: -18px;
+  height: 36px;
+  cursor: pointer;
+}
+
+.flag-wind-text{
+  color: $white;
+  font-size: 14px;
+  line-height: 36px;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right: 4px;
+  position: relative;
+  top: 2px;
+}
+
+.flag-wind-toggle{
+  width: 72px;
+  height: 36px;
+  border: 1px solid $white;
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+  position: relative;
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.flag-wind-toggle-text{
+  display: inline-block;
+  width: 33px;
+  line-height: 38px;
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 13px;
+  position: relative;
+  z-index: 10;
+  @include transition(color .2s ease-in-out);
+}
+
+.flag-wind-toggle-on{
+  color: $blue;
+  .off &{
+    color: $white;
+  }
+}
+
+.flag-wind-toggle-off{
+  color: $white;
+  .off &{
+    color: $blue;
+  }
+}
+
+.flag-wind-toggle-white{
+  position: absolute;
+  width: 50%;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: $white;
+  z-index: 1;
+  @include transition(left .2s ease-in-out);
+  .off &{
+    left: 50%;
+  }
+}
+
+.flag-wind-input{
+  // opacity: 0;
 }

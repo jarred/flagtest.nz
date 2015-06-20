@@ -5,7 +5,11 @@ var flagTemplate    = require('../templates/flag.ejs');
 
 var FlagView = Backbone.View.extend({
   className: 'flag',
+  events: {
+    'click .js-wind-toggle': 'toggleWind'
+  },
   initialize: function(options){
+    _.bindAll(this, 'toggleWind');
     console.log(this.model.toJSON())
     this.appModel = options.appModel;
     this.render();
@@ -17,6 +21,15 @@ var FlagView = Backbone.View.extend({
     _.defer(function(){
       window.Flag3D.init(_this.model.get('uploadEvent'));
     });
+  },
+  toggleWind: function(event){
+    var $el = $(event.target).closest('.js-wind-toggle');
+    if($el.hasClass('off')){
+      $el.removeClass('off');
+    }else{
+      $el.addClass('off');
+    }
+    window.Flag3D.toggleWind(!$el.hasClass('off'));
   }
 });
 
