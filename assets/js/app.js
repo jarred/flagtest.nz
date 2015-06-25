@@ -45,13 +45,13 @@
 /***/ function(module, exports, __webpack_require__) {
 
 	/* WEBPACK VAR INJECTION */(function(global) {var FlagTest = window.FlagTest || (window.FlagTest = {});
-	var $                   = __webpack_require__(1);
+	var $                   = __webpack_require__(2);
 	global.jQuery           = $;
 	window.$                = $;
-	var _                   = __webpack_require__(2);
-	var Backbone            = __webpack_require__(3);
+	var _                   = __webpack_require__(3);
+	var Backbone            = __webpack_require__(4);
 	Backbone.$ = $;
-	var ImageUtil           = __webpack_require__(9);
+	var ImageUtil           = __webpack_require__(5);
 	//
 	// var Flag3D = require('./flag3d.js');
 	// var FlagPhysics = require('./vendor/flag-physics.js');
@@ -59,14 +59,14 @@
 	// var attachFastClick     = require('fastclick');
 	// attachFastClick(document.body);
 
-	var API                 = __webpack_require__(4);
+	var API                 = __webpack_require__(1);
 
 	var Models = {}
 
 	var Views = {
-	  Intro:                __webpack_require__(5),
-	  Flag:                 __webpack_require__(6),
-	  Upload:               __webpack_require__(8)
+	  Intro:                __webpack_require__(6),
+	  Flag:                 __webpack_require__(7),
+	  Upload:               __webpack_require__(9)
 	};
 
 	var AppModel = new Backbone.Model();
@@ -124,6 +124,35 @@
 
 /***/ },
 /* 1 */
+/***/ function(module, exports) {
+
+	var API = {
+	  getFlag: function(id, callback){
+	    callback({
+	    "description": "The flag shows the sea, the long white cloud, the night sky and Matariki (Pleaides). Every people who came to NZ had to navigate here over the sea. The first navigators to find NZ navigated by the stars, and the constellation of Matariki is placed on the flag in their honour. The flag retains the same blue and white as featured on the original.",
+	    "designer": "Lee Churchman",
+	    "designer_location": "Waikato",
+	    "id": 7155,
+	    "image_path": "http://flag.joshbarr.com/static/submissions/7155.jpg",
+	    "last_scraped": "2015-05-19T21:49:53.900566+00:00",
+	    "suggested_by": null,
+	    "suggested_by_location": null,
+	    "tags": [
+	      "Southern Cross",
+	      "vertical stripes",
+	      "landscape"
+	    ],
+	    "title": "Matariki over Long White Cloud and Sea",
+	    "url": "https://www.govt.nz/browse/engaging-with-government/the-nz-flag-your-chance-to-decide/gallery/design/7155"
+	    });
+	  }
+	}
+
+	module.exports = API;
+
+
+/***/ },
+/* 2 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -9339,7 +9368,7 @@
 
 
 /***/ },
-/* 2 */
+/* 3 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;//     Underscore.js 1.8.3
@@ -10893,7 +10922,7 @@
 
 
 /***/ },
-/* 3 */
+/* 4 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/* WEBPACK VAR INJECTION */(function(global) {//     Backbone.js 1.2.1
@@ -10912,7 +10941,7 @@
 
 	  // Set up Backbone appropriately for the environment. Start with AMD.
 	  if (true) {
-	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(2), __webpack_require__(1), exports], __WEBPACK_AMD_DEFINE_RESULT__ = function(_, $, exports) {
+	    !(__WEBPACK_AMD_DEFINE_ARRAY__ = [__webpack_require__(3), __webpack_require__(2), exports], __WEBPACK_AMD_DEFINE_RESULT__ = function(_, $, exports) {
 	      // Export global even in AMD case in case this script is loaded with
 	      // others that may still expect a global Backbone.
 	      root.Backbone = factory(root, exports, _, $);
@@ -12773,41 +12802,47 @@
 	/* WEBPACK VAR INJECTION */}.call(exports, (function() { return this; }())))
 
 /***/ },
-/* 4 */
-/***/ function(module, exports) {
-
-	var API = {
-	  getFlag: function(id, callback){
-	    callback({
-	    "description": "The flag shows the sea, the long white cloud, the night sky and Matariki (Pleaides). Every people who came to NZ had to navigate here over the sea. The first navigators to find NZ navigated by the stars, and the constellation of Matariki is placed on the flag in their honour. The flag retains the same blue and white as featured on the original.",
-	    "designer": "Lee Churchman",
-	    "designer_location": "Waikato",
-	    "id": 7155,
-	    "image_path": "http://flag.joshbarr.com/static/submissions/7155.jpg",
-	    "last_scraped": "2015-05-19T21:49:53.900566+00:00",
-	    "suggested_by": null,
-	    "suggested_by_location": null,
-	    "tags": [
-	      "Southern Cross",
-	      "vertical stripes",
-	      "landscape"
-	    ],
-	    "title": "Matariki over Long White Cloud and Sea",
-	    "url": "https://www.govt.nz/browse/engaging-with-government/the-nz-flag-your-chance-to-decide/gallery/design/7155"
-	    });
-	  }
-	}
-
-	module.exports = API;
-
-
-/***/ },
 /* 5 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Backbone        = __webpack_require__(3);
-	var _               = __webpack_require__(2);
-	var $               = __webpack_require__(1);
+	var $                   = __webpack_require__(2);
+	var _                   = __webpack_require__(3);
+
+	var ImageUtil = {
+	  bufferFromData: function(data, callback){
+	    var img = new Image();
+	    var _this = this;
+	    img.onload = function(){
+	      console.log('callback', callback);
+	      _this.imageLoaded(img, callback);
+	    }
+	    img.src = data;
+	  },
+	  imageLoaded: function(img, callback){
+	    var w = img.width;
+	    var h = img.height;
+	    var canvas = document.createElement("canvas");
+	    canvas.width = w;
+	    canvas.height = h;
+	    var ctx = canvas.getContext("2d");
+	    ctx.drawImage(img, 0, 0, w, h);
+	    // $('body').html(canvas);
+	    var imageData = ctx.getImageData(0, 0, w, h);
+	    // var buffer = imageData.data.buffer;
+	    callback(img);
+	  }
+	};
+
+	module.exports = ImageUtil;
+
+
+/***/ },
+/* 6 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var Backbone        = __webpack_require__(4);
+	var _               = __webpack_require__(3);
+	var $               = __webpack_require__(2);
 
 	var IntroView = Backbone.View.extend({
 	  events: {
@@ -12828,13 +12863,13 @@
 
 
 /***/ },
-/* 6 */
+/* 7 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Backbone        = __webpack_require__(3);
-	var _               = __webpack_require__(2);
-	var $               = __webpack_require__(1);
-	var flagTemplate    = __webpack_require__(7);
+	var Backbone        = __webpack_require__(4);
+	var _               = __webpack_require__(3);
+	var $               = __webpack_require__(2);
+	var flagTemplate    = __webpack_require__(8);
 
 	var FlagView = Backbone.View.extend({
 	  className: 'flag',
@@ -12845,6 +12880,11 @@
 	    _.bindAll(this, 'toggleWind');
 	    if(options.imageData){
 	      this.imageData = options.imageData
+	    }else{
+	      var img = new Image();
+	      img.src = this.model.get('image_path');
+	      this.imageData = img;
+	      console.log(this.model.toJSON());
 	    }
 	    this.appModel = options.appModel;
 	    this.render();
@@ -12872,7 +12912,7 @@
 
 
 /***/ },
-/* 7 */
+/* 8 */
 /***/ function(module, exports) {
 
 	module.exports = function (obj) {
@@ -12899,12 +12939,12 @@
 	}
 
 /***/ },
-/* 8 */
+/* 9 */
 /***/ function(module, exports, __webpack_require__) {
 
-	var Backbone        = __webpack_require__(3);
-	var _               = __webpack_require__(2);
-	var $               = __webpack_require__(1);
+	var Backbone        = __webpack_require__(4);
+	var _               = __webpack_require__(3);
+	var $               = __webpack_require__(2);
 
 	var UploadView = Backbone.View.extend({
 	  events: {
@@ -12928,41 +12968,6 @@
 	});
 
 	module.exports = UploadView;
-
-
-/***/ },
-/* 9 */
-/***/ function(module, exports, __webpack_require__) {
-
-	var $                   = __webpack_require__(1);
-	var _                   = __webpack_require__(2);
-
-	var ImageUtil = {
-	  bufferFromData: function(data, callback){
-	    var img = new Image();
-	    var _this = this;
-	    img.onload = function(){
-	      console.log('callback', callback);
-	      _this.imageLoaded(img, callback);
-	    }
-	    img.src = data;
-	  },
-	  imageLoaded: function(img, callback){
-	    var w = img.width;
-	    var h = img.height;
-	    var canvas = document.createElement("canvas");
-	    canvas.width = w;
-	    canvas.height = h;
-	    var ctx = canvas.getContext("2d");
-	    ctx.drawImage(img, 0, 0, w, h);
-	    // $('body').html(canvas);
-	    var imageData = ctx.getImageData(0, 0, w, h);
-	    // var buffer = imageData.data.buffer;
-	    callback(imageData);
-	  }
-	};
-
-	module.exports = ImageUtil;
 
 
 /***/ }

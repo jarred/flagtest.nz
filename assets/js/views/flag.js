@@ -12,6 +12,11 @@ var FlagView = Backbone.View.extend({
     _.bindAll(this, 'toggleWind');
     if(options.imageData){
       this.imageData = options.imageData
+    }else{
+      var img = new Image();
+      img.src = this.model.get('image_path');
+      this.imageData = img;
+      console.log(this.model.toJSON());
     }
     this.appModel = options.appModel;
     this.render();

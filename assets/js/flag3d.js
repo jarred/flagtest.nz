@@ -48,10 +48,12 @@ var Flag3D = {
     // cloth material
     var clothTexture;
     if(imageData !== undefined){
-      console.log('imageData?', imageData);
-      var buffer = imageData.data.buffer;
-      clothTexture = new THREE.DataTexture(buffer, imageData.width, imageData.height);
-      console.log('clothTexture', clothTexture);
+      // console.log('imageData?', imageData);
+      // var buffer = imageData.data.buffer;
+      // clothTexture = new THREE.DataTexture(buffer, imageData.width, imageData.height);
+      // console.log('clothTexture', clothTexture);
+
+      clothTexture = THREE.ImageUtils.loadTexture( imageData.src );
     }else{
       clothTexture = THREE.ImageUtils.loadTexture( flagImage );
     }

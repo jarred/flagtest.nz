@@ -22,7 +22,7 @@ var ImageUtil = {
     // $('body').html(canvas);
     var imageData = ctx.getImageData(0, 0, w, h);
     // var buffer = imageData.data.buffer;
-    callback(imageData);
+    callback(img);
   }
 };
 
