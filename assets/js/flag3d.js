@@ -1,4 +1,4 @@
-var options = ['/assets/images/12190-new-zealand-new-light.jpg']
+var options = ['/assets/images/jb-16.png']
 var flagImage = options[Math.floor(Math.random() * options.length)];
 var pins = [];
 for (var j=0;j<=cloth.h;j++)
@@ -12,7 +12,7 @@ var sphere;
 var object, arrow;
 
 var Flag3D = {
-  init: function(event){
+  init: function(imageData){
     this.container = $('.js-flag-canvas');
     scene = new THREE.Scene();
     scene.fog = new THREE.Fog( 0x000000, 1000, 10000 );
@@ -47,9 +47,11 @@ var Flag3D = {
     scene.add( light );
     // cloth material
     var clothTexture;
-    if(event !== undefined){
-      console.log(event.target.result);
-      clothTexture = new THREE.DataTexture(event.target.result, 752, 752, THREE.RGBFormat);
+    if(imageData !== undefined){
+      console.log('imageData?', imageData);
+      var buffer = imageData.data.buffer;
+      clothTexture = new THREE.DataTexture(buffer, imageData.width, imageData.height);
+      console.log('clothTexture', clothTexture);
     }else{
       clothTexture = THREE.ImageUtils.loadTexture( flagImage );
     }

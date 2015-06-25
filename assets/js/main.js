@@ -5,6 +5,7 @@ window.$                = $;
 var _                   = require('underscore');
 var Backbone            = require('backbone');
 Backbone.$ = $;
+var ImageUtil           = require('./util/image.js');
 //
 // var Flag3D = require('./flag3d.js');
 // var FlagPhysics = require('./vendor/flag-physics.js');
@@ -53,12 +54,20 @@ FlagTest.Main = {
     })
   },
   newFlagFromUpload: function(uploadEvent){
+    var _this = this;
+    ImageUtil.bufferFromData(uploadEvent.target.result, function(imageData){
+      _this.createFlagFromImageData(imageData);
+      // console.log('imgBuffer', buffer);
+    });
+  },
+  createFlagFromImageData: function(imageData){
+    console.log('createFlagFromImageData', imageData);
     var flagModel = new Backbone.Model({
-      uploadEvent: uploadEvent,
       fromUpload: true
     });
     var flag = new Views.Flag({
-      model: flagModel
+      model: flagModel,
+      imageData: imageData
     });
     $('.js-skyline').html(flag.el);
   }

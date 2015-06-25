@@ -10,7 +10,9 @@ var FlagView = Backbone.View.extend({
   },
   initialize: function(options){
     _.bindAll(this, 'toggleWind');
-    console.log(this.model.toJSON())
+    if(options.imageData){
+      this.imageData = options.imageData
+    }
     this.appModel = options.appModel;
     this.render();
   },
@@ -19,7 +21,7 @@ var FlagView = Backbone.View.extend({
     this.$el.html(flagTemplate(this.model.toJSON()));
     var _this = this;
     _.defer(function(){
-      window.Flag3D.init(_this.model.get('uploadEvent'));
+      window.Flag3D.init(_this.imageData);
     });
   },
   toggleWind: function(event){
