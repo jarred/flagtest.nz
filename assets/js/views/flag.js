@@ -10,11 +10,13 @@ var FlagView = Backbone.View.extend({
   },
   initialize: function(options){
     _.bindAll(this, 'toggleWind');
+    console.log(this.model.toJSON());
     if(options.imageData){
       this.imageData = options.imageData
     }else{
       var img = new Image();
-      img.src = this.model.get('image_path');
+      img.crossOrigin = "Anonymous";
+      img.src = this.model.get('src');
       this.imageData = img;
       console.log(this.model.toJSON());
     }

@@ -5,6 +5,7 @@ var ImageUtil = {
   bufferFromData: function(data, callback){
     var img = new Image();
     var _this = this;
+    img.crossOrigin = "Anonymous";
     img.onload = function(){
       console.log('callback', callback);
       _this.imageLoaded(img, callback);
