@@ -52,7 +52,7 @@ var Flag3D = {
       // var buffer = imageData.data.buffer;
       // clothTexture = new THREE.DataTexture(buffer, imageData.width, imageData.height);
       // console.log('clothTexture', clothTexture);
-
+      imageData.crossOrigin = 'Anonymous'
       clothTexture = THREE.ImageUtils.loadTexture( imageData.src );
     }else{
       clothTexture = THREE.ImageUtils.loadTexture( flagImage );

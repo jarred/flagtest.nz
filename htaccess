@@ -1,0 +1,6 @@
+---
+layout: null
+permalink: .htaccess
+---
+
+Header set Access-Control-Allow-Origin "*"
