@@ -44,7 +44,7 @@ FlagTest.Main = {
     });
   },
   newFlag: function(){
-    API.getFlag('', function(data){
+    API.getRandom(function(data){
       data.fromUpload = false;
       var flagModel = new Backbone.Model(data);
       var flag = new Views.Flag({
