@@ -115,7 +115,8 @@ var Flag3D = {
     var time = Date.now();
     // windStrength = Math.cos( time / 7000 ) * 100 + 200;
     // windStrength = 100;
-    windForce.set( Math.sin( time / 2000 ), Math.cos( time / 3000 ), Math.sin( time / 1000 ) ).normalize().multiplyScalar( windStrength );
+    // windForce.set( Math.sin( time / 2000 ), Math.cos( time / 3000 ), Math.sin( time / 1000 ) ).normalize().multiplyScalar( windStrength );
+    windForce.set(2000, 0, 1000).normalize().multiplyScalar(windStrength);
     simulate(time);
     this.render();
     // stats.update();
