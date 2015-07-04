@@ -23,7 +23,6 @@ var AppModel = new Backbone.Model();
 
 FlagTest.Main = {
   init: function(){
-    console.log(Platform);
     $('html').addClass('platform-' + Platform.name.toLowerCase());
     _.bindAll(this, 'newFlag', 'newFlagFromUpload', 'enterID');
     AppModel.on('new-flag', this.newFlag);
@@ -97,7 +96,6 @@ FlagTest.Main = {
   enterID: function(event){
     event.preventDefault();
     var id = window.prompt('Flag ID (number)');
-    console.log('id', id);
     if(id){
       window.location = "/?id=" + id
     }

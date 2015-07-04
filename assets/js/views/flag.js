@@ -2,14 +2,16 @@ var Backbone        = require('backbone');
 var _               = require('underscore');
 var $               = require('jquery');
 var flagTemplate    = require('../templates/flag.ejs');
+var API             = require('../api.js');
 
 var FlagView = Backbone.View.extend({
   className: 'flag',
   events: {
-    'click .js-wind-toggle': 'toggleWind'
+    'click .js-wind-toggle': 'toggleWind',
+    'click .js-rando-flag': 'newRandomFlag'
   },
   initialize: function(options){
-    _.bindAll(this, 'toggleWind');
+    _.bindAll(this, 'toggleWind', 'newRandomFlag');
     console.log(this.model.toJSON());
     if(options.imageData){
       this.imageData = options.imageData
@@ -39,6 +41,13 @@ var FlagView = Backbone.View.extend({
       $el.addClass('off');
     }
     window.Flag3D.toggleWind(!$el.hasClass('off'));
+  },
+  newRandomFlag: function(event){
+    event.preventDefault();
+    $('.js-preloader').removeClass('hide');
+    API.getRandom(function(data){
+      window.location = "/?id=" + data.remote_id;
+    })
   }
 });
 

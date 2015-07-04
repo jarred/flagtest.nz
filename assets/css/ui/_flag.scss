@@ -175,3 +175,46 @@
 .flag-wind-input{
   // opacity: 0;
 }
+
+.flag-rando{
+  width: 35px;
+  height: 35px;
+  background-color: rgba(#FFF, .5);
+  border-radius: 50%;
+  position: absolute;
+  display: block;
+  right: 0;
+  top: -80px;
+  cursor: pointer;
+  svg{
+    display: block;
+    width: 25px;
+    height: 25px;
+    margin: 5px;
+    fill: $blue;
+  }
+  .tooltip{
+    position: absolute;
+    left: -200px;
+    right: -200px;
+    top: -35px;
+    text-align: center;
+    font: 400 15px/20px $sans;
+    pointer-events: none;
+    opacity: 0;
+    span{
+      background-color: $black;
+      display: inline-block;
+      padding: 6px 10px 2px;
+      color: $white;
+      border-radius: 3px;
+    }
+  }
+  &:hover{
+    .tooltip{
+      opacity: 1;
+      @include transition(opacity .3s linear);
+    }
+    background-color: $white;
+  }
+}
