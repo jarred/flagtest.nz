@@ -8,13 +8,7 @@ Backbone.$ = $;
 var ImageUtil           = require('./util/image.js');
 var StringUtil          = require('./util/string.js');
 var Velocity            = require('velocity-animate');
-//
-// var Flag3D = require('./flag3d.js');
-// var FlagPhysics = require('./vendor/flag-physics.js');
-// var THREE = require('./vendor/three50dev2.js');
-// var attachFastClick     = require('fastclick');
-// attachFastClick(document.body);
-
+var Platform            = require('platform');
 var API                 = require('./api.js');
 
 var Models = {}
@@ -29,9 +23,12 @@ var AppModel = new Backbone.Model();
 
 FlagTest.Main = {
   init: function(){
-    _.bindAll(this, 'newFlag', 'newFlagFromUpload');
+    console.log(Platform);
+    $('html').addClass('platform-' + Platform.name.toLowerCase());
+    _.bindAll(this, 'newFlag', 'newFlagFromUpload', 'enterID');
     AppModel.on('new-flag', this.newFlag);
     AppModel.on('new-flag-from-upload', this.newFlagFromUpload);
+    $('.js-enter_flag_id').on('click', this.enterID);
     this.extendViews();
     if(window.location.search){
       var data = StringUtil.queryStringToJSON(window.location.search);
@@ -96,6 +93,14 @@ FlagTest.Main = {
       $('.js-skyline').html(flag.el);
       _this.hidePreloader();
     })
+  },
+  enterID: function(event){
+    event.preventDefault();
+    var id = window.prompt('Flag ID (number)');
+    console.log('id', id);
+    if(id){
+      window.location = "/?id=" + id
+    }
   }
 };
 FlagTest.Main.init();

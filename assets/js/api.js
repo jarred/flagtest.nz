@@ -5,6 +5,10 @@ var API = {
       dataType: 'JSONP',
       success: function(data){
         callback(data);
+      },
+      error: function(){
+        window.alert('Couldn\'t find that flag :( Sorry!');
+        window.location = '/'
       }
     });
   },

@@ -16,6 +16,10 @@
 
 .skyline-upload{
   position: relative;
+  display: none !important;
+  html.platform-chrome &{
+    display: inline-block !important;
+  }
 }
 
 .skyline-upload-input{
