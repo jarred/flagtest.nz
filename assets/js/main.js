@@ -6,6 +6,7 @@ var _                   = require('underscore');
 var Backbone            = require('backbone');
 Backbone.$ = $;
 var ImageUtil           = require('./util/image.js');
+var StringUtil          = require('./util/string.js');
 //
 // var Flag3D = require('./flag3d.js');
 // var FlagPhysics = require('./vendor/flag-physics.js');
@@ -31,6 +32,12 @@ FlagTest.Main = {
     AppModel.on('new-flag', this.newFlag);
     AppModel.on('new-flag-from-upload', this.newFlagFromUpload);
     this.extendViews();
+    if(window.location.search){
+      var data = StringUtil.queryStringToJSON(window.location.search);
+      if(data.id){
+        this.showFlag(data.id);
+      }
+    }
   },
   extendViews: function (){
     _.each($('.js-view'), function(el){
@@ -70,6 +77,16 @@ FlagTest.Main = {
       imageData: imageData
     });
     $('.js-skyline').html(flag.el);
+  },
+  showFlag: function(id){
+    API.getFlag(id, function(data){
+      data.fromUpload = false;
+      var flagModel = new Backbone.Model(data);
+      var flag = new Views.Flag({
+        model: flagModel
+      });
+      $('.js-skyline').html(flag.el);
+    })
   }
 };
 FlagTest.Main.init();
