@@ -27,8 +27,6 @@ var Views = {
 
 var AppModel = new Backbone.Model();
 
-console.log(Velocity);
-
 FlagTest.Main = {
   init: function(){
     _.bindAll(this, 'newFlag', 'newFlagFromUpload');
@@ -65,7 +63,6 @@ FlagTest.Main = {
     var _this = this;
     ImageUtil.bufferFromData(uploadEvent.target.result, function(imageData){
       _this.createFlagFromImageData(imageData);
-      // console.log('imgBuffer', buffer);
     });
   },
   hidePreloader: function(){
@@ -79,7 +76,6 @@ FlagTest.Main = {
     })
   },
   createFlagFromImageData: function(imageData){
-    console.log('createFlagFromImageData', imageData);
     var flagModel = new Backbone.Model({
       fromUpload: true
     });
