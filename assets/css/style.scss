@@ -23,9 +23,14 @@ html{
 @import "helpers/_prefixes";
 @import "grid/_breakpoints";
 @import "grid/_grid";
+@import "ui/_preloader";
 @import "ui/_skyline";
 @import "ui/_intro";
 @import "ui/_footer";
 @import "ui/_flag";
 @import "type/_headings";
 @import "ui/_btn";
+
+.hide{
+  display: none;
+}

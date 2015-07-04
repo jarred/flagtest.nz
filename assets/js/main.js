@@ -7,6 +7,7 @@ var Backbone            = require('backbone');
 Backbone.$ = $;
 var ImageUtil           = require('./util/image.js');
 var StringUtil          = require('./util/string.js');
+var Velocity            = require('velocity-animate');
 //
 // var Flag3D = require('./flag3d.js');
 // var FlagPhysics = require('./vendor/flag-physics.js');
@@ -26,6 +27,8 @@ var Views = {
 
 var AppModel = new Backbone.Model();
 
+console.log(Velocity);
+
 FlagTest.Main = {
   init: function(){
     _.bindAll(this, 'newFlag', 'newFlagFromUpload');
@@ -37,6 +40,8 @@ FlagTest.Main = {
       if(data.id){
         this.showFlag(data.id);
       }
+    }else{
+      this.hidePreloader();
     }
   },
   extendViews: function (){
@@ -51,13 +56,9 @@ FlagTest.Main = {
     });
   },
   newFlag: function(){
+    var _this = this;
     API.getRandom(function(data){
-      data.fromUpload = false;
-      var flagModel = new Backbone.Model(data);
-      var flag = new Views.Flag({
-        model: flagModel
-      });
-      $('.js-skyline').html(flag.el);
+      window.location = "/?id=" + data.remote_id;
     })
   },
   newFlagFromUpload: function(uploadEvent){
@@ -66,6 +67,16 @@ FlagTest.Main = {
       _this.createFlagFromImageData(imageData);
       // console.log('imgBuffer', buffer);
     });
+  },
+  hidePreloader: function(){
+    var el = $('.js-preloader');
+    el.velocity({
+      opacity: 0
+    }, {
+      complete: function(){
+        el.addClass('hide');
+      }
+    })
   },
   createFlagFromImageData: function(imageData){
     console.log('createFlagFromImageData', imageData);
@@ -79,6 +90,7 @@ FlagTest.Main = {
     $('.js-skyline').html(flag.el);
   },
   showFlag: function(id){
+    var _this = this;
     API.getFlag(id, function(data){
       data.fromUpload = false;
       var flagModel = new Backbone.Model(data);
@@ -86,6 +98,7 @@ FlagTest.Main = {
         model: flagModel
       });
       $('.js-skyline').html(flag.el);
+      _this.hidePreloader();
     })
   }
 };
