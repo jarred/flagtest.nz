@@ -12,7 +12,7 @@ $black: #333333;
 $white: #FFF;
 $gray: #4a4a4a;
 
-$sans: 'Calibre', 'Helvetica Neue', Sans-Serif;
+$sans: 'CalibreWeb', 'Helvetica Neue', Sans-Serif;
 
 //
 html{
@@ -20,6 +20,7 @@ html{
   font-family: $sans;
 }
 
+@import "type/_fonts";
 @import "helpers/_prefixes";
 @import "grid/_breakpoints";
 @import "grid/_grid";

@@ -3,15 +3,16 @@
   text-transform: uppercase;
   border: 1px solid rgba($white, .5);
   -webkit-font-smoothing: antialiased;
-  font-weight: 700;
+  font-family: $sans;
   background-color: transparent;
-  font-weight: 700;
+  font-weight: 600;
   color: $white;
   padding: 10px;
   vertical-align: middle;
   font-size: 15px;
+  line-height: 12px;
   border-radius: 2px;
-  letter-spacing: 1px;
+  outline: none;
   &:hover{
     background-color: $white;
     color: $blue;
