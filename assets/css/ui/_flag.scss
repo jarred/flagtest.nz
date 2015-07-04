@@ -197,7 +197,7 @@
     position: absolute;
     left: -200px;
     right: -200px;
-    top: -35px;
+    top: -37px;
     text-align: center;
     font: 400 15px/20px $sans;
     pointer-events: none;
@@ -205,7 +205,7 @@
     span{
       background-color: $black;
       display: inline-block;
-      padding: 6px 10px 2px;
+      padding: 4px 10px 6px;
       color: $white;
       border-radius: 3px;
     }
