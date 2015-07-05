@@ -20,6 +20,10 @@ html{
   font-family: $sans;
 }
 
+html, body{
+  overflow-x: hidden;
+}
+
 @import "type/_fonts";
 @import "helpers/_prefixes";
 @import "grid/_breakpoints";
