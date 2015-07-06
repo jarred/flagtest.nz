@@ -1,0 +1,28 @@
+.no_webgl{
+  background-color: rgba(#000, .7);
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 800;
+  html.webgl &{
+    display: none;
+  }
+}
+
+.no_webgl-message{
+  background-color: #000000;
+  margin-top: 200px;
+  padding: 20px;
+  color: #92989a;
+  line-height: 20px;
+  a{
+    color: #FFF;
+  }
+}
+
+.no_webgl-heading{
+  margin-bottom: 8px;
+  color: #FFF;
+}
