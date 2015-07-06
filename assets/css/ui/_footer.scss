@@ -9,6 +9,7 @@
   margin: 0;
   margin-bottom: 17px;
   margin-right: 20px;
+  line-height: 17px;
 }
 
 .footer a{
@@ -27,4 +28,18 @@
 .footer-flagpost-logo{
   margin-top: 35px;
   display: block;
+}
+
+.footer-elsewhere{
+  @include breakpoint(mobile){
+    margin-top: 30px;
+  }
+}
+
+@include breakpoint(mobile){
+  .footer-elsewhere-flagdesign,
+  .footer-elsewhere-flagpost{
+    width: 50% !important;
+    float: left !important;
+  }
 }

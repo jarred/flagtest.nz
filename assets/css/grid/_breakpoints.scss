@@ -49,3 +49,9 @@
     display: none;
   }
 }
+
+@include breakpoint(mobile){
+  .break-mobile{
+    display: block;
+  }
+}

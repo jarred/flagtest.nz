@@ -8,6 +8,7 @@
   color: $white;
   padding: 32px;
   box-sizing: border-box;
+  padding-bottom: 60px;
   @include breakpoint(tablet){
     width: auto;
     left: 40px;
@@ -16,10 +17,11 @@
   }
   @include breakpoint(mobile){
     width: auto;
-    left: 20px;
-    right: 20px;
-    top: 20px;
+    left: 0;
+    right: 0;
+    top: 0;
     height: auto;
+    position: static;
   }
 }
 
@@ -27,6 +29,10 @@
   font-size: 40px;
   letter-spacing: -1px;
   margin-bottom: 70px;
+  @include breakpoint(mobile){
+    font-size: 30px;
+    letter-spacing: 0;
+  }
 }
 
 .intro-submit{

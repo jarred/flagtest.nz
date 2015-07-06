@@ -7,7 +7,7 @@
   background-size: cover;
   // @include animation('sky-transision 8s linear forwards infinite');
   @include breakpoint(mobile){
-    padding-bottom: 160%;
+    padding-bottom: 140%;
   }
   @include breakpoint(tablet){
     padding-bottom: 70%;
