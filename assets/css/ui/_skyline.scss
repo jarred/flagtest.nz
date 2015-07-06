@@ -4,6 +4,7 @@
   padding-bottom: 50%;
   background-color: $blue;
   background-image: url('/assets/images/sky-bg.jpg');
+  background-size: cover;
   // @include animation('sky-transision 8s linear forwards infinite');
   @include breakpoint(mobile){
     padding-bottom: 160%;
