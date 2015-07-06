@@ -48,10 +48,8 @@ var Flag3D = {
     // cloth material
     var clothTexture;
     if(imageData !== undefined){
-      // console.log('imageData?', imageData);
       // var buffer = imageData.data.buffer;
       // clothTexture = new THREE.DataTexture(buffer, imageData.width, imageData.height);
-      // console.log('clothTexture', clothTexture);
       imageData.crossOrigin = 'Anonymous'
       clothTexture = THREE.ImageUtils.loadTexture( imageData.src );
     }else{
@@ -122,7 +120,6 @@ var Flag3D = {
     // stats.update();
   },
   toggleWind: function(value){
-    console.log('toggleWind', value);
     // window.wind = value;
     if(value){
       windStrength = 300;

@@ -11,7 +11,6 @@ var UploadView = Backbone.View.extend({
     this.appModel = options.appModel;
   },
   handleUpload: function(event){
-    console.log('handleUpload', event);
     var _this = this;
     var f = event.target.files[0];
     var fr = new FileReader();

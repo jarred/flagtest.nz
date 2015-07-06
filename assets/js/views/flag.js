@@ -8,11 +8,11 @@ var FlagView = Backbone.View.extend({
   className: 'flag',
   events: {
     'click .js-wind-toggle': 'toggleWind',
-    'click .js-rando-flag': 'newRandomFlag'
+    'click .js-rando-flag': 'newRandomFlag',
+    'click .js-enter_flag_id': 'gotoFlag'
   },
   initialize: function(options){
-    _.bindAll(this, 'toggleWind', 'newRandomFlag');
-    console.log(this.model.toJSON());
+    _.bindAll(this, 'toggleWind', 'newRandomFlag', 'gotoFlag');
     if(options.imageData){
       this.imageData = options.imageData
     }else{
@@ -20,7 +20,6 @@ var FlagView = Backbone.View.extend({
       img.crossOrigin = "Anonymous";
       img.src = this.model.get('src');
       this.imageData = img;
-      console.log(this.model.toJSON());
     }
     this.appModel = options.appModel;
     this.render();
@@ -48,6 +47,13 @@ var FlagView = Backbone.View.extend({
     API.getRandom(function(data){
       window.location = "/?id=" + data.remote_id;
     })
+  },
+  gotoFlag: function(event){
+    event.preventDefault();
+    var id = window.prompt('Flag ID (number)');
+    if(id){
+      window.location = "/?id=" + id
+    }
   }
 });
 

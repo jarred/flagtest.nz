@@ -184,45 +184,20 @@
   // opacity: 0;
 }
 
-.flag-rando{
-  width: 35px;
-  height: 35px;
-  background-color: rgba(#FFF, .5);
-  border-radius: 50%;
+.flag-next_steps{
   position: absolute;
-  display: block;
   right: 0;
-  top: -80px;
-  cursor: pointer;
-  svg{
-    display: block;
-    width: 25px;
-    height: 25px;
-    margin: 5px;
-    fill: $blue;
-  }
-  .tooltip{
-    position: absolute;
-    left: -200px;
-    right: -200px;
-    top: -37px;
-    text-align: center;
-    font: 400 15px/20px $sans;
-    pointer-events: none;
-    opacity: 0;
-    span{
-      background-color: $black;
-      display: inline-block;
-      padding: 4px 10px 6px;
-      color: $white;
-      border-radius: 3px;
+  top: -60px;
+  font-size: 14px;
+  a{
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(#FFF, .6);
+    &:hover{
+      border-bottom-color: transparent;
     }
   }
-  &:hover{
-    .tooltip{
-      opacity: 1;
-      @include transition(opacity .3s linear);
-    }
-    background-color: $white;
+  @include breakpoint(mobile){
+    display: none;
   }
 }

@@ -13,7 +13,6 @@ var IntroView = Backbone.View.extend({
   randomFlag: function(){
     // logic for picking a random flag here...
     this.appModel.trigger('new-flag');
-    // console.log(this.appModel);
   }
 });
 

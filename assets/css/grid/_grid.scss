@@ -27,6 +27,10 @@ $gridMargin: 26px;
     margin-left: 0;
     margin-right: 0;
   }
+  @include breakpoint(tablet){
+    margin-left: 0;
+    margin-right: 0;
+  }
 }
 
 .grid-col{
