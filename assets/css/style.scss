@@ -14,16 +14,6 @@ $gray: #4a4a4a;
 
 $sans: 'CalibreWeb', 'Helvetica Neue', Sans-Serif;
 
-//
-html{
-  background-color: $black;
-  font-family: $sans;
-}
-
-html, body{
-  overflow-x: hidden;
-}
-
 @import "type/_fonts";
 @import "helpers/_prefixes";
 @import "grid/_breakpoints";
@@ -36,6 +26,19 @@ html, body{
 @import "type/_headings";
 @import "ui/_btn";
 @import "ui/_no-webgl";
+
+html{
+  background-color: $black;
+  font-family: $sans;
+  @include breakpoint(retina){
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+}
+
+html, body{
+  overflow-x: hidden;
+}
 
 .hide{
   display: none;

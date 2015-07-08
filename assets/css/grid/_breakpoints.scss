@@ -12,10 +12,20 @@
     @media (min-width: 0px) and (max-width: 767px)  { @content; }
   }
   @if $point == landscape{
-    @media (orientation: landscape) { @content }
+    @media (orientation: landscape) { @content; }
   }
   @if $point == portrait{
-    @media (orientation: portrait) { @content }
+    @media (orientation: portrait) { @content; }
+  }
+  @if $point == retina {
+    @media only screen and (-webkit-min-device-pixel-ratio: 2),
+     only screen and (-moz-min-device-pixel-ratio: 2),
+     only screen and (-o-min-device-pixel-ratio: 2/1),
+     only screen and (min-device-pixel-ratio: 2),
+     only screen and (min-resolution: 192dpi),
+     only screen and (min-resolution: 2dppx){
+       @content;
+     }
   }
 }
 
