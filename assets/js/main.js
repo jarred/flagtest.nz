@@ -31,7 +31,9 @@ FlagTest.Main = {
     this.extendViews();
     if(window.location.search){
       var data = StringUtil.queryStringToJSON(window.location.search);
-      if(data.id){
+      if(data.dmf){
+        this.showDMFFlag(data);
+      }else if(data.id){
         this.showFlag(data.id);
       }
     }else{
@@ -73,7 +75,8 @@ FlagTest.Main = {
   },
   createFlagFromImageData: function(imageData){
     var flagModel = new Backbone.Model({
-      fromUpload: true
+      fromUpload: true,
+      dmf: null
     });
     var flag = new Views.Flag({
       model: flagModel,
@@ -99,6 +102,15 @@ FlagTest.Main = {
     if(id){
       window.location = "/?id=" + id
     }
+  },
+  showDMFFlag: function(data){
+    data.fromUpload = true;
+    var flagModel = new Backbone.Model(data);
+    var flag = new Views.Flag({
+      model: flagModel
+    });
+    $('.js-skyline').html(flag.el);
+    this.hidePreloader();
   }
 };
 FlagTest.Main.init();

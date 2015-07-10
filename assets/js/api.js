@@ -4,6 +4,7 @@ var API = {
       url: 'http://flagpost.nz/api/public/flag/' + id + '/?callback=?',
       dataType: 'JSONP',
       success: function(data){
+        data.dmf = null;
         callback(data);
       },
       error: function(){
@@ -17,6 +18,7 @@ var API = {
       url: 'http://flagpost.nz/api/public/flag/lucky-dip/?callback=?',
       dataType: 'JSONP',
       success: function(data){
+        data.dmf = null;
         callback(data);
       }
     });
